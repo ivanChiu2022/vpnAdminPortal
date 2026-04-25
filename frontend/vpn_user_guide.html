@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Setup Guide</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #06121f 0%, #0b1f33 100%);
+      color: #eaf6ff;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+    .hero {
+      background: rgba(10, 25, 40, 0.78);
+      border: 1px solid rgba(71, 199, 255, 0.25);
+      border-radius: 24px;
+      padding: 36px 28px;
+      box-shadow: 0 0 30px rgba(0, 187, 255, 0.12);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(32, 180, 255, 0.15);
+      border: 1px solid rgba(32, 180, 255, 0.35);
+      color: #7fdfff;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 40px;
+      color: #ffffff;
+    }
+    .subtitle {
+      max-width: 760px;
+      margin: 0 auto;
+      color: #b9d8ea;
+      font-size: 17px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .card {
+      background: rgba(8, 20, 33, 0.88);
+      border: 1px solid rgba(86, 206, 255, 0.18);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    }
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 22px;
+      color: #8be9ff;
+    }
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #13c7ff, #1ee3b1);
+      color: #04111d;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    ul, ol {
+      padding-left: 20px;
+      margin: 10px 0 0;
+    }
+    li { margin-bottom: 8px; }
+    .platform {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(17, 37, 56, 0.9);
+      border: 1px solid rgba(109, 212, 255, 0.14);
+    }
+    .platform-title {
+      font-weight: bold;
+      color: #d7f6ff;
+      margin-bottom: 8px;
+    }
+    .footer-box {
+      margin-top: 26px;
+      background: rgba(10, 24, 39, 0.92);
+      border-left: 4px solid #17d4ff;
+      border-radius: 16px;
+      padding: 20px;
+      color: #cfe9f7;
+    }
+    .warning {
+      border-left-color: #ff9b5e;
+      background: rgba(44, 25, 18, 0.65);
+    }
+    .note {
+      color: #9cc4da;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #04111d;
+      background: linear-gradient(135deg, #13c7ff, #1ee3b1);
+      font-weight: bold;
+    }
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .check {
+      background: rgba(13, 33, 49, 0.9);
+      border: 1px solid rgba(100, 214, 255, 0.15);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    code {
+      background: rgba(255,255,255,0.08);
+      padding: 2px 6px;
+      border-radius: 6px;
+      color: #d5f4ff;
+    }
+    @media (max-width: 640px) {
+      h1 { font-size: 30px; }
+      .hero { padding: 28px 20px; }
+      .card { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      
+      <h1> User Setup Guide</h1>
+      <p class="subtitle">
+        Follow the steps below to install WireGuard, open your VPN configuration file, and connect securely on your phone or laptop.
+      </p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <div class="step-number">1</div>
+        <h2>Download the WireGuard App</h2>
+        <div style="text-align:center; margin:12px 0 18px;">
+          <img src="https://s3.ca-central-1.amazonaws.com/ivanchiu.info/asset/wireguard.svg" alt="WireGuard Logo" style="width:80px; height:auto; filter: drop-shadow(0 0 6px rgba(0,255,255,0.6));">
+        </div>
+        <p>Install the official WireGuard application on your device first.</p>
+
+        <div class="platform">
+          <div class="platform-title">Mobile (iPhone / Android)</div>
+          <ul>
+            <li>Open the <strong>App Store</strong> or <strong>Google Play</strong></li>
+            <li>Search for <strong>WireGuard</strong></li>
+            <li>Install the official WireGuard app</li>
+          </ul>
+        </div>
+
+        <div class="platform">
+          <div class="platform-title">Laptop (Windows / macOS)</div>
+          <ul>
+            <li>Open your browser</li>
+            <li>Go to the official WireGuard install page</li>
+            <li>Download the correct version for your device</li>
+            <li>Complete the installation</li>
+          </ul>
+          <a class="btn" href="https://www.wireguard.com/install/" target="_blank" rel="noopener noreferrer">Open WireGuard Download Page</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="step-number">2</div>
+        <h2>Download Your <code>.conf</code> File from Email</h2>
+        <p>Your VPN email includes an attachment that contains your personal VPN configuration.</p>
+        <ol>
+          <li>Open the email from your VPN administrator</li>
+          <li>Find the attached file ending with <code>.conf</code></li>
+          <li>Download the file to your phone or laptop</li>
+          <li>Remember where the file is saved</li>
+        </ol>
+
+        <div class="platform">
+          <div class="platform-title">Suggested Save Locations</div>
+          <ul>
+            <li><strong>Phone:</strong> Files app or Downloads folder</li>
+            <li><strong>Laptop:</strong> Desktop or Downloads folder</li>
+          </ul>
+        </div>
+
+        <p class="note">Example filename: <code>ivan_phone.conf</code> or <code>ivan_laptop.conf</code></p>
+      </article>
+
+      <article class="card">
+        <div class="step-number">3</div>
+        <h2>Open WireGuard and Connect</h2>
+        <p>Import your <code>.conf</code> file into WireGuard, then activate the VPN tunnel.</p>
+
+        <div class="platform">
+          <div class="platform-title">On Phone</div>
+          <ol>
+            <li>Open <strong>WireGuard</strong></li>
+            <li>Tap <strong>Add Tunnel</strong></li>
+            <li>Select <strong>Import from file</strong></li>
+            <li>Choose your downloaded <code>.conf</code> file</li>
+            <li>Tap <strong>Activate</strong></li>
+          </ol>
+        </div>
+
+        <div class="platform">
+          <div class="platform-title">On Laptop</div>
+          <ol>
+            <li>Open <strong>WireGuard</strong></li>
+            <li>Click <strong>Add Tunnel</strong></li>
+            <li>Select <strong>Import tunnel(s) from file</strong></li>
+            <li>Choose your downloaded <code>.conf</code> file</li>
+            <li>Click <strong>Activate</strong></li>
+          </ol>
+        </div>
+      </article>
+    </section>
+
+    <section class="footer-box">
+      <h2 style="margin-top:0; color:#8be9ff;">How to Confirm It Works</h2>
+      <div class="checklist">
+        <div class="check">WireGuard shows the tunnel as <strong>Active</strong></div>
+        <div class="check">Your internet still works normally</div>
+        <div class="check">Your traffic is now encrypted through the VPN</div>
+        <div class="check">Your public IP should appear as the VPN server IP</div>
+      </div>
+    </section>
+
+    <section class="footer-box warning">
+      <h2 style="margin-top:0; color:#ffd4b3;">Important Security Notes</h2>
+      <ul>
+        <li>Do <strong>not</strong> share your <code>.conf</code> file with anyone</li>
+        <li>Each <code>.conf</code> file is normally assigned to one device</li>
+        <li>If the VPN does not connect, turn it off and on again first</li>
+        <li>If it still fails, contact your VPN administrator</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>

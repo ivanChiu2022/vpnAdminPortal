@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #081120;
+  color: #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 32px;
+  color: #00d4ff;
+}
+
+.header p {
+  color: #9fb3c8;
+}
+
+.summary-cards {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 220px;
+  background: #102038;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.15);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #7fdfff;
+}
+
+.card p {
+  font-size: 28px;
+  margin: 10px 0 0;
+}
+
+.table-section {
+  background: #102038;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.12);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #1e3555;
+}
+
+th {
+  color: #7fdfff;
+}
+
+.status-active {
+  color: #32d583;
+  font-weight: bold;
+}
+
+.status-terminated {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+button {
+  background: #ff5c5c;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}

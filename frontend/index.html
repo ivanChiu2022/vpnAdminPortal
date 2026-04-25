@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ivanVPN Admin Portal</title>
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body style="display:none;">
+<script>
+const clientId = "YOUR_COGNITO_APP_CLIENT_ID";
+const domain = "https://YOUR_COGNITO_DOMAIN.auth.YOUR_REGION.amazoncognito.com";
+const redirectUri = "https://YOUR_ADMIN_PORTAL_DOMAIN";
+
+function showPortal() {
+    document.body.style.display = "block";
+}
+
+function login() {
+    const loginUrl =
+        `${domain}/oauth2/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=openid+email+profile`;
+
+    window.location.href = loginUrl;
+}
+
+async function exchangeCodeForToken(code) {
+    const body = new URLSearchParams({
+        grant_type: "authorization_code",
+        client_id: clientId,
+        code: code,
+        redirect_uri: redirectUri
+    });
+
+    const response = await fetch(`${domain}/oauth2/token`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: body
+    });
+
+    const data = await response.json();
+
+    if (data.id_token) {
+        sessionStorage.setItem("id_token", data.id_token);
+        sessionStorage.setItem("access_token", data.access_token);
+
+        window.history.replaceState({}, document.title, "/");
+        showPortal();
+    } else {
+        login();
+    }
+}
+
+(function () {
+    document.addEventListener("DOMContentLoaded", function () {
+        document.body.style.display = "none";
+
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get("code");
+        const token = sessionStorage.getItem("id_token");
+
+        if (token) {
+            showPortal();
+            return;
+        }
+
+        if (code) {
+            exchangeCodeForToken(code);
+        } else {
+            login();
+        }
+    });
+})();
+</script>
+  <div class="container">
+    <header class="header">
+      <h1>XXXXX VPN Admin Portal</h1>
+      <p>Powered by XXXXXXX</p>
+    </header>
+
+    <section class="summary-cards">
+      <div class="card">
+        <h3>Total Users</h3>
+        <p id="totalUsers">0</p>
+      </div>
+      <div class="card">
+        <h3>Active Users</h3>
+        <p id="activeUsers">0</p>
+      </div>
+      <div class="card">
+        <h3>Terminated Users</h3>
+        <p id="terminatedUsers">0</p>
+      </div>
+    </section>
+
+    <section class="create-user-section">
+  <h2>Create VPN User</h2>
+
+  <div class="form-row">
+    <input id="usernameInput" type="text" placeholder="Enter username" />
+
+    <select id="deviceInput">
+      <option value="laptop">Laptop</option>
+      <option value="phone">Phone</option>
+    </select>
+
+    <button onclick="handleCreateUser()">Create User</button>
+  </div>
+</section>
+
+    <section class="table-section">
+      <h2>VPN Users</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Device Type</th>
+            <th>VPN IP</th>
+            <th>Public IP</th>
+            <th>Last Handshake</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="userTableBody">
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
