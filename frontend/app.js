@@ -1,6 +1,6 @@
 
 
-// input your API ID and Rejoin information here
+// input your API ID and Regoin information here
 const API_BASE = "https://YOUR_API_ID.execute-api.YOUR_REGION.amazonaws.com";
 
 const users = [];
