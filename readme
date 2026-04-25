@@ -1,0 +1,54 @@
+A cloud-based VPN admin portal built on AWS, enabling secure user provisioning, automated configuration, and centralized administration using WireGuard.
+
+--Project Overview
+
+Creating a admin portal for current VPN server for below purposes 
+
+     - Create and terminate VPN users
+     - Automatically generate WireGuard configuration files
+     - Store user profiles and .conf file securely in AWS S3
+     - Push VPN configuration updates to EC2 via AWS Systems Manager (SSM)
+     - Send VPN access files to users via AWS SES
+     - Manage access through a secure web-based admin portal
+
+
+Workflow – Create VPN User
+    1. Admin logs in via Amazon Cognito
+    2. Admin submits user creation request via Admin Portal
+    3. API Gateway triggers Lambda function
+    4. Lambda:
+        4.1 Generates WireGuard key pair
+        4.2 Creates .conf file
+        4.3 Stores user data in S3
+        4.4 Sends command via SSM to update WireGuard server
+        4.5 Sends configuration file to user via SES
+    5. User receives .conf file and connects to VPN
+
+Workflow – Terminate VPN User
+    1. Admin selects user from portal
+    2. API Gateway triggers Lambda
+    3. Lambda:
+        3.1 Removes user from WireGuard config via SSM
+        3.2 Deletes user record from S3
+    4. VPN access is immediately revoked
+
+
+Tech Stack
+   - Frontend
+        HTML / CSS / JavaScript
+        Hosted on Amazon S3
+        Delivered via CloudFront
+  - Backend
+        AWS Lambda (Python)  
+        API Gateway (REST API)
+  - Authentication
+        Amazon Cognito (OAuth2 / OpenID Connect)
+  - Infrastructure
+        EC2 (Ubuntu + WireGuard VPN)
+        AWS Systems Manager (SSM)
+  - Storage
+        Amazon S3 (User data & config files)
+  - Email
+        Amazon SES (Send VPN config to users)
+
+
