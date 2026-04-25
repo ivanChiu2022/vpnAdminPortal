@@ -2,6 +2,8 @@ A cloud-based VPN admin portal built on AWS, enabling secure user provisioning, 
 
 --Project Overview
 
+![Solution Diagram](vpnAdminPortal.png)
+
 Creating a admin portal for current VPN server for below purposes 
 
      - Create and terminate VPN users
